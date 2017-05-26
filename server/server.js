@@ -3,13 +3,13 @@ var fs = require('fs');
 var url = require('url');
 var path = require('path');
 var qs = require('querystring');
-var objectID = require('mongodb').objectID; // 用來建構MongoDBID物件
+var objectID = require('mongodb').ObjectID; // 用來建構MongoDBID物件
 
 // 利用 mongodb 的 driver 宣告一個 MongoClient
 var MongoClient = require('mongodb').MongoClient;
 
 // 宣告要連接的主機位置
-var uri = 'mongodb://140.112.28.194/b03607036';
+var uri = 'mongodb://140.112.28.194:27017/b03607036';
 
 // 設定 port 預設為 1337，若系統環境有設定則以系統環境設定為主
 var port = process.env.PORT || 1337;
@@ -46,9 +46,10 @@ var server = http.createServer(function(req, res) {
                 db.close();
                 // 資料處理完畢後，開始撰寫回傳值
                 res.writeHead(200, {
-                    'Content - Type ': 'application / json ',
-                    'Access - Control - Allow - Origin': ' * ' // 允許跨頁面js連線
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*' // 允許跨頁面js連線
                 })
+                console.log(JSON.stringify(productList));
                 res.write(JSON.stringify(productList)); // 將找到的資料陣列轉為JSON格式，並寫入回傳值中
                 res.end();
 
@@ -71,7 +72,7 @@ var server = http.createServer(function(req, res) {
          */
         MongoClient.connect(uri, function(err, db) {
             var collection = db.collection('product');
-            var newId = new ObjectID(id); // 將傳回的ID轉為MongoDB之ObjectID物件
+            var newId = new objectID(id); // 將傳回的ID轉為MongoDB之ObjectID物件
             collection.deleteMany({ _id: newId }); // 刪除與此ID相同之物件
             // 再進行一次查詢工作(程式碼同上頁)，回傳最新的資料庫內容……
             var productList = [];
@@ -86,8 +87,8 @@ var server = http.createServer(function(req, res) {
                     db.close();
                     // 資料處理完畢後，開始撰寫回傳值
                     res.writeHead(200, {
-                        'Content - Type ': 'application / json ',
-                        'Access - Control - Allow - Origin': ' * ' // 允許跨頁面js連線
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': '*' // 允許跨頁面js連線
                     });
                     res.write(JSON.stringify(productList)); // 將找到的資料陣列轉為JSON格式，並寫入回傳值中
                     res.end();
@@ -135,8 +136,8 @@ var server = http.createServer(function(req, res) {
                     db.close();
                     // 資料處理完畢後，開始撰寫回傳值
                     res.writeHead(200, {
-                        'Content - Type ': 'application / json ',
-                        'Access - Control - Allow - Origin': ' * ' // 允許跨頁面js連線
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': '*' // 允許跨頁面js連線
                     })
                     res.write(JSON.stringify(productList)); // 將找到的資料陣列轉為JSON格式，並寫入回傳值中
                     res.end();
@@ -156,12 +157,12 @@ var server = http.createServer(function(req, res) {
                     'count': product.count
                 });
                 // 通知瀏覽器已經寫入完成
-                res.writeHead(200, {
+                /*res.writeHead(200, {
                     'Content-Type': 'text/plain',
                     'Access-Control-Allow-Origin': '*'
                 });
                 res.write("OK!!");
-                res.end();
+                res.end();*/
             })
 
             /*res.writeHead(200, {
