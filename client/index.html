@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/index.css">
+
+    <title>作業二</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="jumbotron">
+            <h1>作業二 - 商品資料管理</h1>
+        </div>
+
+        <div class="page-header">
+            <h1>商品清單</h1>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <table class="table table-hover">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <td>#</td>
+                            <td>商品名稱</td>
+                            <td>商品定價</td>
+                            <td>商品數量</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <button id="query" class="btn btn-primary">查詢</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="separator"></div>
+            </div>
+        </div>
+
+
+        <div class="page-header">
+            <h1>新增商品</h1>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <form action="http://127.0.0.1:1337/insert" method="post">
+                    <div class="form-group">
+                        <label for="InputProductName">商品名稱</label>
+                        <input type="text" name="name" class="form-control" id="InputProductName" aria-describedby="productName" placeholder="請輸入商品名稱">
+                    </div>
+                    <div class="form-group">
+                        <label for="InputProductPrice">商品價格</label>
+                        <input type="Number" name="price" class="form-control" id="InputProductPrice" aria-describedby="productPrice" placeholder="請輸入商品價格">
+                    </div>
+                    <div class="form-group">
+                        <label for="InputProductCount">商品數量</label>
+                        <input type="Number" name="count" class="form-control" id="InputProductCount" aria-describedby="productCount" placeholder="請輸入商品數量">
+                    </div>
+                    <button type="submit" class="btn btn-primary">新增</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <footer class="text-center">
+                    <div>© 2017 CSX2003 網站資料庫程式設計 <a href="http://homepage.ntu.edu.tw/~kchen/">Kun Chen</a></div>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="./js/jquery-3.2.1.js"></script>
+    <script src="./js/tether.js"></script>
+    <script src="./js/bootstrap.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
