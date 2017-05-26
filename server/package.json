@@ -1,0 +1,14 @@
+{
+  "name": "webapi",
+  "version": "0.0.1",
+  "description": "Server\r \"C:\\Program Files\\MongoDB\\Server\\3.4\\bin\\mongod.exe\" --dbpath .\\database",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kChen",
+  "license": "MIT",
+  "dependencies": {
+    "mongodb": "^2.2.26"
+  }
+}
