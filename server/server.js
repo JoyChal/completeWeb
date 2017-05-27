@@ -26,7 +26,7 @@ var server = http.createServer(function(req, res) {
     let actionlist = action.split('/');
     console.log(actionlist);
 
-    if (/query/i.test(actionlist[1])) {
+    if (/query/i.test(actionlist[1])) { // /query/i:query旁兩個斜線表示我要辨識的東西，i表示不分大小寫
         // 這裡執行資料查詢的動作 (請自行完成)
         // TODO: db.product.find(id) 
         /*db.product.find().toArray(function(err,productList)){
@@ -49,7 +49,7 @@ var server = http.createServer(function(req, res) {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*' // 允許跨頁面js連線
                 })
-                console.log(JSON.stringify(productList));
+                console.log(JSON.stringify(productList)); // JSON 只是代表一種格式(有key跟value對應的那種)
                 res.write(JSON.stringify(productList)); // 將找到的資料陣列轉為JSON格式，並寫入回傳值中
                 res.end();
 
@@ -193,7 +193,8 @@ var server = http.createServer(function(req, res) {
                 // 建立選擇所要操作的collection
                 var collection = db.collection('product');
                 // 建立ObjectId物件
-                var newId = new ObjectID(id);
+                var id = actionlist[2]; // 第一個參數是update, 第二個才是id(見index.js:15)
+                var newId = new objectID(id);
                 collection.updateOne({ _id: newId }, {
                     $set: {
                         "name": product.name,
